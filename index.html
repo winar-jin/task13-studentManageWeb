@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>学生信息管理系统</title>
+    <link rel="stylesheet" href="./ventor/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style/main.css">
+    <link rel="stylesheet" type="text/css" href="./ventor/sweetalert/sweetalert.css">
+</head>
+
+<body>
+
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+                <a class="navbar-brand" href="#">学生信息管理系统</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">学生管理<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" id="addStudent">添加学生信息</a></li>
+                            <li><a href="#" id="searthStudent">查询学生成绩</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#" id="deleteStudent">删除学生成绩</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" id="about">关于</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <div class="container">
+        <!-- 展示学生信息 -->
+        <div class="show-studentlist table-responsive">
+            <table class="table table-striped text-center">
+                <caption>学生信息如下：</caption>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th class="text-center">姓名</th>
+                        <th class="text-center">学号</th>
+                        <th class="text-center">语文</th>
+                        <th class="text-center">数学</th>
+                        <th class="text-center">英语</th>
+                        <th class="text-center">编程</th>
+                        <th class="text-center">总分</th>
+                        <th class="text-center">平均分</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <!-- 添加学生信息 -->
+        <div class="add-student">
+            <blockquote class="blockquote">
+                <p class="lead">添加学生信息：</p>
+            </blockquote>
+            <form>
+                <div class="form-group">
+                    <label for="stu-name">学生姓名</label>
+                    <input type="text" class="form-control" id="stu-name" placeholder="姓名">
+                </div>
+                <div class="form-group">
+                    <label for="stu-no">学号</label>
+                    <input type="number" class="form-control" id="stu-no" placeholder="学号">
+                </div>
+                <div class="form-group">
+                    <label for="stu-class">班级</label>
+                    <input type="text" class="form-control" id="stu-class" placeholder="班级">
+                </div>
+                <div class="form-group">
+                    <label for="stu-math">数学</label>
+                    <input type="number" class="form-control" id="stu-math" placeholder="数学">
+                </div>
+                <div class="form-group">
+                    <label for="stu-english">英语</label>
+                    <input type="number" class="form-control" id="stu-english" placeholder="英语">
+                </div>
+                <div class="form-group">
+                    <label for="stu-chinese">语文</label>
+                    <input type="number" class="form-control" id="stu-chinese" placeholder="语文">
+                </div>
+                <div class="form-group">
+                    <label for="stu-coding">编程</label>
+                    <input type="number" class="form-control" id="stu-coding" placeholder="编程">
+                </div>
+                <div class="form-group pull-right">
+                    <button type="submit" id="addStuButton" class="btn btn-primary">添加</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- 查询学生信息 -->
+        <div class="search-student">
+            <blockquote class="blockquote">
+                <p class="lead">查询学生成绩：</p>
+            </blockquote>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-3" style="padding-right: 0px;">
+                    <form onsubmit="return false;">
+                        <div class="form-group">
+                            <label for="search" class="sr-only">Search</label>
+                            <input type="number" class="form-control" name="search" id="searchStuNo" placeholder="请输入学号">
+                            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="searchResult">
+                <table class="table table-striped text-center">
+                    <caption>查询学生信息如下：</caption>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th class="text-center">姓名</th>
+                            <th class="text-center">学号</th>
+                            <th class="text-center">语文</th>
+                            <th class="text-center">数学</th>
+                            <th class="text-center">英语</th>
+                            <th class="text-center">编程</th>
+                            <th class="text-center">总分</th>
+                            <th class="text-center">平均分</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <button class="editStudent btn btn-default">修改该生信息</button>
+            </div>
+        </div>
+
+        <!-- 修改学生信息 -->
+        <div class="edit-student">
+            <blockquote class="blockquote">
+                <p class="lead">修改学生信息：</p>
+            </blockquote>
+            <form>
+                <div class="form-group">
+                    <label for="edit-name">学生姓名</label>
+                    <input type="text" class="form-control" id="edit-name" placeholder="姓名" value="张三">
+                </div>
+                <div class="form-group">
+                    <label for="edit-no">学号</label>
+                    <input type="number" class="form-control" id="edit-no" placeholder="学号" value="001">
+                </div>
+                <div class="form-group">
+                    <label for="edit-class">班级</label>
+                    <input type="text" class="form-control" id="edit-class" placeholder="班级" value="一班">
+                </div>
+                <div class="form-group">
+                    <label for="edit-math">数学</label>
+                    <input type="number" class="form-control" id="edit-math" placeholder="数学" value="87">
+                </div>
+                <div class="form-group">
+                    <label for="edit-english">英语</label>
+                    <input type="number" class="form-control" id="edit-english" placeholder="英语" value="76">
+                </div>
+                <div class="form-group">
+                    <label for="edit-chinese">语文</label>
+                    <input type="number" class="form-control" id="edit-chinese" placeholder="语文" value="80">
+                </div>
+                <div class="form-group">
+                    <label for="edit-coding">编程</label>
+                    <input type="number" class="form-control" id="edit-coding" placeholder="编程" value="95">
+                </div>
+                <div class="pull-right">
+                    <button type="button" class="cancelEdit btn btn-primary">取消</button>
+                    <button type="button" class="confirmEdit btn btn-default">确认修改</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="./script/jquery-3.2.1.js"></script>
+    <script src="./ventor/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="./script/main.js"></script>
+    <script src="./script/database.js"></script>
+    <script src="./ventor/sweetalert/sweetalert.min.js"></script>
+</body>
+
+</html>

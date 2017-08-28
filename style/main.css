@@ -1,0 +1,15 @@
+.add-student{
+    display: none;
+}
+
+.search-student{
+    display: none;
+}
+
+.edit-student{
+    display: none;
+}
+
+#searchResult{
+    display: none;
+}
